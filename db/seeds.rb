@@ -70,7 +70,7 @@ apartment1.each do |attributes|
     p"each apartments attributes #{attributes}"
   end
 
-  p "#{user1.apartments}"
+  
 
   
 
