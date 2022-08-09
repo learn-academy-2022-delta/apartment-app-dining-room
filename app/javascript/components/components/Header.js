@@ -14,21 +14,56 @@ class Header extends Component {
     console.log("current_user:", current_user)
     return (
       <>
-        <h1>React in Rails with Devise</h1>
+        <h1>Apartment App</h1>
         <Nav>
+
+          {/* Home page link for all users */}
+          {
+            <NavItem>
+              <a href='/' className="nav-link">Home</a>
+            </NavItem>
+          }
+
+
+          {/* Apartment index link for all users */}
+          {
+            <NavItem>
+              <a href='/apartmentindex' className="nav-link">All Apartments</a>
+            </NavItem>
+          }
+
+          {/* Sign out link for logged in users */}
           {logged_in &&
             <NavItem>
               <a href={sign_out_route} className="nav-link">Sign Out</a>
             </NavItem>
           }
+
+          {/* Sign in link for users not logged in */}
           {!logged_in &&
             <NavItem>
               <a href={sign_in_route} className="nav-link">Sign In</a>
             </NavItem>
           }
+
+          {/* Sign up link for not logged in users */}
           {!logged_in &&
             <NavItem>
               <a href={new_user_route} className="nav-link">Sign Up</a>
+            </NavItem>
+          }
+
+          {/* My apartments link for logged in user */}
+          {logged_in &&
+            <NavItem>
+              <a href='/apartmentindex' className="nav-link">My Apartments</a>
+            </NavItem>
+          }
+
+          {/* New Apartment link for logged in user */}
+          {logged_in &&
+            <NavItem>
+              <a href='/apartmentnew' className="nav-link">New Apartment</a>
             </NavItem>
           }
         </Nav>
