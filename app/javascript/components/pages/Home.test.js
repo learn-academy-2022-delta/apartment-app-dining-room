@@ -18,6 +18,24 @@ describe("When Home renders", () => {
     const home = shallow(<Home />)
     const homeHeading = home.find("h3")
     console.log("HOME", homeHeading.debug());
-    expect(homeHeading.text()).toEqual("This Should Fail")
+    expect(homeHeading.text()).toEqual("Welcome!")
+  })
+})
+
+describe("When Home renders", () => {
+  it("displays text", () => {
+    const home = shallow(<Home />)
+    const homeHeading = home.find("p")
+    console.log("HOME", homeHeading.debug());
+    expect(homeHeading.length).toEqual(1)
+  })
+})
+
+describe("When Home renders", () => {
+  it("displays 2 buttons", () => {
+    const home = shallow(<Home />)
+    const homeHeading = home.find("a")
+    console.log("HOME", homeHeading.debug());
+    expect(homeHeading.length).toEqual(2)
   })
 })
