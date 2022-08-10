@@ -14,6 +14,30 @@ import {
 } from 'react-router-dom'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      apartments: [],
+      
+    }
+  }
+
+
+  createApartment = (listing) => {
+    fetch("http://localhost:3000/apartments", {
+      body: JSON.stringify(listing),
+      headers:{
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      mode: "no-cors"
+    })
+    .then(response => response.json())
+    .then(payload => this.setState({apartments:payload}))
+    .catch(errors => console.log("New listing Error", errors))
+  }
+  
+
   render() {
     return (
       
@@ -23,7 +47,9 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/apartmentindex" component={ApartmentIndex} />
             <Route path="/apartmentshow" component={ApartmentShow} />
-            <Route path="/apartmentnew" component={ApartmentNew} />
+            <Route path="/apartmentnew" render={()=>{
+              return <ApartmentNew  createApartment = {this.createApartment} current_user={this.props.current_user} />
+            }} />
             <Route path="/apartmentedit" component={ApartmentEdit} />
             <Route component={NotFound}/>
           </Switch>
