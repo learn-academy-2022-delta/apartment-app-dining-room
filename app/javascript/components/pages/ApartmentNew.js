@@ -6,38 +6,37 @@ import { Form, FormGroup, Input, Label} from 'reactstrap'
 export default class ApartmentNew extends Component {
 constructor(props){
   super(props)
-  this.state ={
-    newListing:{
-      street:"",
-      city:"",
-      state:"",
-      manager:"",
-      email:"",
-      price:"",
-      bedrooms:"",
-      bathrooms:"",
-      pets:"",
-      image:"",
-      user_id:this.props.current_user.id
+  this.state = {
+    newListing: {
+      street: "",
+      city: "",
+      state: "",
+      manager: "",
+      email: "",
+      price: "",
+      bedrooms: "",
+      bathrooms: "",
+      pets: "",
+      image: "",
+      user_id: this.props.current_user.id
     },
-    submitted:false
+    submitted : false
   }
 }
 
-handleChange = (e) =>{
+handleChange = (e) => {
   
   let {newListing} = this.state
   newListing[e.target.name] = e.target.value
   this.setState({newListing: newListing})
 }
 
-handleSubmit = () =>{
+handleSubmit = () => {
   this.props.createApartment(this.state.newListing)
   this.setState({submitted: true})
 }
 
   render() {
-    console.log(this.state.newListing)
     return (
       <>
       
@@ -48,8 +47,8 @@ handleSubmit = () =>{
               <Input
                 type="text"
                 name="street"
-                onChange={this.handleChange}
-                value={this.state.newListing.street}
+                onChange = {this.handleChange}
+                value = {this.state.newListing.street}
             />
           </FormGroup>
           <FormGroup>
@@ -57,8 +56,8 @@ handleSubmit = () =>{
               <Input
                 type="text"
                 name="city"
-                onChange={this.handleChange}
-                value={this.state.newListing.city}
+                onChange = {this.handleChange}
+                value = {this.state.newListing.city}
             />
           </FormGroup>
           <FormGroup>
