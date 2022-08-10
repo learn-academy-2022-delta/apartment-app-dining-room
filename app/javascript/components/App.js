@@ -26,24 +26,18 @@ class App extends Component {
   }
 
   readApartment = () => {
-    fetch("http://localhost:3000/apartments")
+    fetch("/apartments")
     .then(response => response.json())
     .then(apartmentArray => this.setState({apartments: apartmentArray}))
-    .catch(errors => console.log("Cat read errors:", errors))
+    .catch(errors => console.log("Apartment read errors:", errors))
   }
-
-
-
-
 
   render() {
     return (
-      
         <Router>
           <Header {...this.props} />
           <Switch>
             <Route exact path="/" component={Home} />
-            {/* <Route path="/apartmentindex" component={ApartmentIndex} /> */}
             <Route path="/apartmentindex" render={(props) => <ApartmentIndex apartments={this.state.apartments}/>} />
             <Route path="/apartmentshow" component={ApartmentShow} />
             <Route path="/apartmentnew" component={ApartmentNew} />
@@ -51,9 +45,6 @@ class App extends Component {
             <Route component={NotFound}/>
           </Switch>
         </Router>
-        
-        
-  
     )
   }
 }
