@@ -42,7 +42,6 @@ class App extends Component {
       sign_in_route,
       sign_out_route
     } = this.props
-    console.log(this.state.apartments)
     return (
       <Router>
       <Header {...this.props} />
@@ -51,7 +50,7 @@ class App extends Component {
         <Route path="/mylistings" render={(props) => {
           let myListings = this.state.apartments.filter(apartment => apartment.user_id === current_user.id)
           return(
-        <ProtectedApartmentIndex apartments={myListings} />)}} />
+          <ProtectedApartmentIndex apartments={myListings} />)}} />
         <Route path="/apartmentindex" component={ApartmentIndex} />
         <Route path="/apartmentshow" component={ApartmentShow} />
         <Route path="/apartmentnew" component={ApartmentNew} />

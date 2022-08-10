@@ -9,9 +9,6 @@ class ProtectedApartmentIndex extends Component {
       logged_in,
       current_user,
     } = this.props
-    console.log("logged_in:", logged_in)
-    console.log("current_user:", current_user)
-    console.log(this.props.apartments)
     return(
         <>
         <h1>My Listings</h1>
