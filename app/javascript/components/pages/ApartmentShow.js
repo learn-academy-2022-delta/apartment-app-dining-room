@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import { Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap'
 
 export default class ApartmentShow extends Component {
+
   render() {
     let { apartment } = this.props
+    console.log(apartment)
 
     return (
       <>
-        <div classname="show=container">
+        <div classname="show=container"> 
+        {apartment &&
           <Card id="showCard">
-            <CardImg src={apartment.image} />
+            <CardImg src={apartment.image}/>
             <CardBody>
               <CardTitle>{apartment.price}</CardTitle>
               <CardText>
@@ -21,6 +24,7 @@ export default class ApartmentShow extends Component {
               </CardText>
             </CardBody>
           </Card>
+        }
         </div>
       </>
     )
