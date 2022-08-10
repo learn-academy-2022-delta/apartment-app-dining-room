@@ -23,7 +23,6 @@ class App extends Component {
   }
   componentDidMount() {
     this.readApartment()
-    console.log(this.state)
   }
 
   readApartment = () => {
