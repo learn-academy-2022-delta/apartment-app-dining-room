@@ -37,6 +37,7 @@ handleSubmit = () =>{
 }
 
   render() {
+    console.log(this.state.newListing)
     return (
       <>
       

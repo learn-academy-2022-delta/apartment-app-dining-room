@@ -24,16 +24,16 @@ class App extends Component {
 
 
   createApartment = (listing) => {
-    fetch("http://localhost:3000/apartments", {
+    fetch("/apartments", {
       body: JSON.stringify(listing),
       headers:{
         "Content-Type": "application/json"
       },
-      method: "POST",
-      mode: "no-cors"
+      method: "POST"
+      
     })
     .then(response => response.json())
-    .then(payload => this.setState({apartments:payload}))
+    .then(() => this.readApartment())
     .catch(errors => console.log("New listing Error", errors))
   }
   
