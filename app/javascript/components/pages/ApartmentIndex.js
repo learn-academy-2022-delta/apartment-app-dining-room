@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react'
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, Col, Row } from 'reactstrap'
 
@@ -25,5 +27,9 @@ export default class ApartmentIndex extends Component {
       </>
     )
   }
+
 }
+
+}
+
 
