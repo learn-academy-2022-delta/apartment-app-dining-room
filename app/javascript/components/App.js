@@ -17,11 +17,22 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+
       apartments: [],
       
     }
   }
 
+  componentDidMount(){
+    this.readApartment()
+  }
+
+  readApartment = () => {
+    fetch("/apartments")
+    .then(response => response.json())
+    .then(apartmentArray => this.setState({apartments: apartmentArray}))
+    .catch(errors => console.log("Apartment read errors:", errors))
+  }
 
   createApartment = (listing) => {
     fetch("/apartments", {
@@ -36,16 +47,14 @@ class App extends Component {
     .then(() => this.readApartment())
     .catch(errors => console.log("New listing Error", errors))
   }
-  
 
   render() {
     return (
-      
         <Router>
           <Header {...this.props} />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/apartmentindex" component={ApartmentIndex} />
+            <Route path="/apartmentindex" render={(props) => <ApartmentIndex apartments={this.state.apartments}/>} />
             <Route path="/apartmentshow" component={ApartmentShow} />
             <Route path="/apartmentnew" render={()=>{
               return <ApartmentNew  createApartment = {this.createApartment} current_user={this.props.current_user} />
@@ -54,9 +63,6 @@ class App extends Component {
             <Route component={NotFound}/>
           </Switch>
         </Router>
-        
-        
-  
     )
   }
 }
