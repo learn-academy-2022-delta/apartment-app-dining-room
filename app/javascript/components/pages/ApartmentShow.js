@@ -8,7 +8,7 @@ export default class ApartmentShow extends Component {
 
     return (
       <>
-        <div classname="show=container">
+        <div className="show-container">
         {apartment &&
           <Card id="showCard">
             <CardImg src={apartment.image} />
