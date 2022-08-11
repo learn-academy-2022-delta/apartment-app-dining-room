@@ -37,7 +37,6 @@ handleSubmit = () => {
 }
 
   render() {
-    console.log(this.props.current_user.id)
     return (
       <>
       
