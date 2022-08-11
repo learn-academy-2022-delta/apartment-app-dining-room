@@ -32,4 +32,3 @@ export default class ApartmentIndex extends Component {
 
 
 
-
