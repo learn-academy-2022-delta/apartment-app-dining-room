@@ -22,7 +22,7 @@ export default class ApartmentShow extends Component {
                 <span>{apartment.pets}</span>
               </CardText>
               <Button><a href={`/apartmentindex`} >Back to Listings</a></Button>
-              <Button><a href={`/apartmentedit`} >Edit Listing</a></Button>
+              <Button><a href={`/apartmentedit/${apartment.id}`} >Edit Listing</a></Button>
             </CardBody>
           </Card>
         }
