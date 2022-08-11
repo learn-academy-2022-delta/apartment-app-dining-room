@@ -63,11 +63,15 @@ class App extends Component {
          <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/apartmentindex" render={(props) => <ApartmentIndex apartments={this.state.apartments}/>} />
+            <Route path="/apartmentshow/:id" render={(props) => {
+              let id = props.match.params.id
+              let apartment = this.state.apartments.find(apartment => apartment.id === +id)
+              return <ApartmentShow apartment={apartment}/> }} />
+            <Route path="/apartmentnew" component={ApartmentNew} />
             <Route path="/mylistings" render={(props) => {
                 let myListings = this.state.apartments.filter(apartment => apartment.user_id === current_user.id)
                 return(
                 <ProtectedApartmentIndex apartments={myListings} />)}} />
-            <Route path="/apartmentshow" component={ApartmentShow} />
             <Route path="/apartmentnew" render={()=>{
               return <ApartmentNew  createApartment = {this.createApartment} current_user={this.props.current_user} />
               }} />
@@ -78,5 +82,5 @@ class App extends Component {
     )
   }
 }
-
+//test
 export default App
