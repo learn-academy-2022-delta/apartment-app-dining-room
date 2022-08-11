@@ -14,6 +14,8 @@ import {
   Switch
 } from 'react-router-dom'
 
+import'./App.css'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -67,13 +69,12 @@ class App extends Component {
               let id = props.match.params.id
               let apartment = this.state.apartments.find(apartment => apartment.id === +id)
               return <ApartmentShow apartment={apartment}/> }} />
-            <Route path="/apartmentnew" component={ApartmentNew} />
             <Route path="/mylistings" render={(props) => {
                 let myListings = this.state.apartments.filter(apartment => apartment.user_id === current_user.id)
                 return(
                 <ProtectedApartmentIndex apartments={myListings} />)}} />
             <Route path="/apartmentnew" render={()=>{
-              return <ApartmentNew  createApartment = {this.createApartment} current_user={this.props.current_user} />
+              return <ApartmentNew  createApartment = {this.createApartment} current_user = {this.props.current_user} />
               }} />
             <Route path="/apartmentedit" component={ApartmentEdit} />
             <Route component={NotFound}/>
