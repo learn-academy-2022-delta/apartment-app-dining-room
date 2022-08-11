@@ -195,6 +195,7 @@ RSpec.describe "Apartments", type: :request do
         bathrooms: integer, 
         pets: string,
         image: text
+        
       )
 
       get '/apartments'

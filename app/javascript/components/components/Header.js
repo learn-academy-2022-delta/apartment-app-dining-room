@@ -56,14 +56,14 @@ class Header extends Component {
           {/* My apartments link for logged in user */}
           {logged_in &&
             <NavItem>
-              <a href='/apartmentindex' className="nav-link">My Apartments</a>
+              <a href='/mylistings' className="nav-link">My Listings</a>
             </NavItem>
           }
 
           {/* New Apartment link for logged in user */}
           {logged_in &&
             <NavItem>
-              <a href='/apartmentnew' className="nav-link">New Apartment</a>
+              <a href='/apartmentnew' className="nav-link">Create Listing</a>
             </NavItem>
           }
         </Nav>
