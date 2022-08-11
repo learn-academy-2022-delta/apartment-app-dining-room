@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap'
+import { Card, CardImg, CardBody, CardTitle, CardText, Button } from 'reactstrap'
 
 export default class ApartmentShow extends Component {
 
@@ -8,7 +8,7 @@ export default class ApartmentShow extends Component {
 
     return (
       <>
-        <div classname="show=container">
+        <div className="show=container">
         {apartment &&
           <Card id="showCard">
             <CardImg src={apartment.image} />
@@ -21,6 +21,8 @@ export default class ApartmentShow extends Component {
                 <br/>
                 <span>Pets: {apartment.pets}</span>
               </CardText>
+              <Button><a href={`/apartmentindex`} >Back to Listings</a></Button>
+              <Button><a href={`/apartmentedit/${apartment.id}`} >Edit Listing</a></Button>
             </CardBody>
           </Card>
         }

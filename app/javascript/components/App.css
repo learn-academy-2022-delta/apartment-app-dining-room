@@ -1,0 +1,20 @@
+
+/*Header*/
+.header {
+    height: 96px;
+    display: flex;
+    justify-content: end;
+    height:5rem;
+    align-content: center;
+    background-color: #2D2726;
+    
+}
+
+.header a {
+    color: #FFFFFF;
+    line-height: 24.2px;
+}
+
+.last-item {
+    padding-right: 2rem;
+}

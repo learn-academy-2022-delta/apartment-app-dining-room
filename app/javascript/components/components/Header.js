@@ -14,8 +14,8 @@ class Header extends Component {
     console.log("current_user:", current_user)
     return (
       <>
-        <h1>Apartment App</h1>
-        <Nav>
+        
+        <Nav className={"header"}>
 
           {/* Home page link for all users */}
           {
@@ -28,14 +28,7 @@ class Header extends Component {
           {/* Apartment index link for all users */}
           {
             <NavItem>
-              <a href='/apartmentindex' className="nav-link">All Apartments</a>
-            </NavItem>
-          }
-
-          {/* Sign out link for logged in users */}
-          {logged_in &&
-            <NavItem>
-              <a href={sign_out_route} className="nav-link">Sign Out</a>
+              <a href='/apartmentindex' className="nav-link">View Listings</a>
             </NavItem>
           }
 
@@ -48,7 +41,7 @@ class Header extends Component {
 
           {/* Sign up link for not logged in users */}
           {!logged_in &&
-            <NavItem>
+            <NavItem className="last-item">
               <a href={new_user_route} className="nav-link">Sign Up</a>
             </NavItem>
           }
@@ -64,6 +57,13 @@ class Header extends Component {
           {logged_in &&
             <NavItem>
               <a href='/apartmentnew' className="nav-link">Create Listing</a>
+            </NavItem>
+          }
+
+          {/* Sign out link for logged in users */}
+          {logged_in &&
+            <NavItem className="last-item">
+              <a href={sign_out_route} className="nav-link">Sign Out</a>
             </NavItem>
           }
         </Nav>

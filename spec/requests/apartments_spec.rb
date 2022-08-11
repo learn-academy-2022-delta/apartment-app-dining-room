@@ -19,9 +19,7 @@ RSpec.describe "Apartments", type: :request do
           bedrooms: 1,
           bathrooms: 1,
           pets: "no",
-          image:"https://cdn.apartmenttherapy.info/image/upload/v1588574754/small%20cool/Submissions/smaller-501-750-square-feet/small-cool-88721428-smaller-501-750-square-feet-Craig-Strulovitz.jpg",
-      }
-    }
+          image:"https://cdn.apartmenttherapy.info/image/upload/v1588574754/small%20cool/Submissions/smaller-501-750-square-feet/small-cool-88721428-smaller-501-750-square-feet-Craig-Strulovitz.jpg",)
     
      get '/apartments'
   

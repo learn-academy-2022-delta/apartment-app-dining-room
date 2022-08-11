@@ -17,7 +17,7 @@ export default class ApartmentIndex extends Component {
                 <CardBody>
                   <CardTitle>{apartments.bedrooms} bedroom {apartments.bathrooms} bath in {apartments.city}</CardTitle>
                   <CardSubtitle>Price: {apartments.price} </CardSubtitle>
-                  <Button>More info here</Button>
+                  <Button><a href={`/apartmentshow/${apartments.id}`} >More info here</a></Button>
                 </CardBody>
               </Card>
             </Col>

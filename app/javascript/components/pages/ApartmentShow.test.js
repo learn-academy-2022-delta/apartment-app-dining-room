@@ -38,4 +38,10 @@ describe("When ApartmentShow renders", () => {
     const apartmentShowHeading = renderedApartmentShow.find("Card")
     expect(apartmentShowHeading.length).toEqual(1)
   })
+
+  it("has two anchor tags", () =>{
+    const apartmentShowAnchorTag = renderedApartmentShow.find("a")
+    expect(apartmentShowAnchorTag.length).toEqual(2)
+  })
 })
+
