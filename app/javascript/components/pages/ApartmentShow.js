@@ -13,13 +13,13 @@ export default class ApartmentShow extends Component {
           <Card id="showCard">
             <CardImg src={apartment.image} />
             <CardBody>
-              <CardTitle>{apartment.price}</CardTitle>
+              <CardTitle>${apartment.price} / month</CardTitle>
               <CardText>
                 <span>{apartment.street}, {apartment.city}, {apartment.state}</span>
                 <br/>
-                <span>{apartment.bedrooms}, {apartment.bathrooms}</span>
+                <span>{apartment.bedrooms} Bedroom, {apartment.bathrooms} Bath</span>
                 <br/>
-                <span>{apartment.pets}</span>
+                <span>Pets: {apartment.pets}</span>
               </CardText>
             </CardBody>
           </Card>
