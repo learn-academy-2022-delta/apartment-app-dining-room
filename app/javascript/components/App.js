@@ -15,23 +15,39 @@ import {
 } from 'react-router-dom'
 
 class App extends Component {
-  constructor (props){
-    super (props)
+  constructor(props) {
+    super(props)
     this.state = {
-      apartments: []
+
+      apartments: [],
+      
     }
   }
-  componentDidMount() {
+
+  componentDidMount(){
     this.readApartment()
   }
 
   readApartment = () => {
     fetch("/apartments")
     .then(response => response.json())
-    .then(payload => this.setState({apartments: payload}))
-    .catch(errors => console.log("Protected Index read errors: ", errors))
+    .then(apartmentArray => this.setState({apartments: apartmentArray}))
+    .catch(errors => console.log("Apartment read errors:", errors))
   }
 
+  createApartment = (listing) => {
+    fetch("/apartments", {
+      body: JSON.stringify(listing),
+      headers:{
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+      
+    })
+    .then(response => response.json())
+    .then(() => this.readApartment())
+    .catch(errors => console.log("New listing Error", errors))
+  }
 
   render() {
     const {
@@ -42,24 +58,23 @@ class App extends Component {
       sign_out_route
     } = this.props
     return (
-      <Router>
-      <Header {...this.props} />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/mylistings" render={(props) => {
-          let myListings = this.state.apartments.filter(apartment => apartment.user_id === current_user.id)
-          return(
-          <ProtectedApartmentIndex apartments={myListings} />)}} />
-        <Route path="/apartmentindex" component={ApartmentIndex} />
-        <Route path="/apartmentshow" component={ApartmentShow} />
-        <Route path="/apartmentnew" component={ApartmentNew} />
-        <Route path="/apartmentedit" component={ApartmentEdit} />
-        <Route component={NotFound}/>
-      </Switch>
-    </Router>
-        
-        
-  
+        <Router>
+         <Header {...this.props} />
+         <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/apartmentindex" render={(props) => <ApartmentIndex apartments={this.state.apartments}/>} />
+            <Route path="/mylistings" render={(props) => {
+                let myListings = this.state.apartments.filter(apartment => apartment.user_id === current_user.id)
+                return(
+                <ProtectedApartmentIndex apartments={myListings} />)}} />
+            <Route path="/apartmentshow" component={ApartmentShow} />
+            <Route path="/apartmentnew" render={()=>{
+              return <ApartmentNew  createApartment = {this.createApartment} current_user={this.props.current_user} />
+              }} />
+            <Route path="/apartmentedit" component={ApartmentEdit} />
+            <Route component={NotFound}/>
+         </Switch>
+        </Router>
     )
   }
 }
